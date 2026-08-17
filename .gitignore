@@ -1,0 +1,125 @@
+# ============================================================
+# Python
+# ============================================================
+
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env/
+conda-env/
+
+# ============================================================
+# IDE / OS
+# ============================================================
+
+.vscode/
+.idea/
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================================================
+# Secrets / credentials
+# ============================================================
+
+.env
+*.env
+*.key
+*.pem
+credentials*
+secrets*
+token*
+api_key*
+
+# ============================================================
+# Logs / temporary files
+# ============================================================
+
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+~$*
+
+logs/
+tmp/
+temp/
+
+# ============================================================
+# Large power-system / PyPSA model files
+# ============================================================
+
+*.nc
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.parquet
+
+cutouts/
+resources/
+.network-storage/
+
+# ============================================================
+# Raw downloaded datasets
+#
+# Keep download/processing scripts in GitHub.
+# Do not commit large raw Elexon / NESO downloads by default.
+# ============================================================
+
+data/raw/**/*.csv
+data/raw/**/*.xlsx
+data/raw/**/*.xls
+data/raw/**/*.zip
+data/raw/**/*.json
+
+# Preserve README/documentation files inside data folders
+!data/raw/**/README.md
+!data/raw/**/.gitkeep
+
+# ============================================================
+# Intermediate processed data
+# ============================================================
+
+data/processed/*.parquet
+data/processed/*.pkl
+data/processed/*.pickle
+
+# ============================================================
+# Large intermediate processed CSVs
+# These can be regenerated from the processing scripts.
+# ============================================================
+
+data/processed/gb_market_core_*.csv
+
+# Keep compact final empirical datasets used in published results.
+!data/processed/gb_empirical_daily_2022_2025.csv
+!data/processed/neso_constraint_breakdown_2022_2025.csv
+
+# ============================================================
+# Solver/model temporary outputs
+# ============================================================
+
+*.lp
+*.mps
+*.sol
+*.bas
+*.mst
+
+.snakemake/
+snakemake_logs/
+
+# ============================================================
+# Keep research outputs that are intentionally publishable
+# ============================================================
+
+# CSV summaries in results/ are intentionally retained.
+# PNG figures in figures/ are intentionally retained.

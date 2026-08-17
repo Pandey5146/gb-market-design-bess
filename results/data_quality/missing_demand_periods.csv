@@ -1,0 +1,5 @@
+settlementDate,settlementPeriod,year,demand_mw,timestamp_utc,generation_biomass_mw,generation_ccgt_mw,generation_coal_mw,generation_intelec_mw,generation_intew_mw,generation_intfr_mw,generation_intifa2_mw,generation_intirl_mw,generation_intned_mw,generation_intnem_mw,generation_intnsl_mw,generation_npshyd_mw,generation_nuclear_mw,generation_ocgt_mw,generation_oil_mw,generation_other_mw,generation_ps_mw,generation_wind_mw,generation_intvkl_mw,generation_intgrnl_mw
+2022-04-30,37,2022,,,,,,,,,,,,,,,,,,,,,,
+2022-09-23,45,2022,,,,,,,,,,,,,,,,,,,,,,
+2023-07-17,45,2023,,,,,,,,,,,,,,,,,,,,,,
+2023-12-29,8,2023,,,,,,,,,,,,,,,,,,,,,,
