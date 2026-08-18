@@ -8,7 +8,9 @@ import pypsa
 # CONFIGURATION
 # ============================================================
 
-REPO = Path(__file__).resolve().parents[2]
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+REPO = PROJECT_ROOT.parent / "PyPSA-GB"
 
 BASE_SCENARIO = "Validation_Jan2020_UniformNetworkBaseline"
 

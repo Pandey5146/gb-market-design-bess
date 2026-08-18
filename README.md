@@ -923,40 +923,163 @@ Rejected because it answered a system-optimisation question rather than the fina
 
 These failures influenced the final methodology and are documented to improve transparency and reproducibility.
 
-28. Reproducibility
+# 28. Reproducibility
 
-The project was developed using:
+This repository contains the research-specific analysis, processed data,
+diagnostics, figures and counterfactual results developed for this study.
 
-Python
-PyPSA
-PyPSA-GB
-pandas
-NumPy
-matplotlib
-Snakemake
-HiGHS
+The underlying electricity-system model is the separate open-source
+**PyPSA-GB** project.
 
-Example environment:
+## 28.1 Upstream PyPSA-GB dependency
 
-conda activate pypsa-gb-stable
+Upstream repository:
 
-Important analysis scripts include:
+`https://github.com/andrewlyden/PyPSA-GB`
 
-project1_gb_market/scripts/
+Exact PyPSA-GB revision used:
+
+```text
+8e084afe4fb2d4be86f270d3f12ad3315eee2a3a
+```
+
+The revision is pinned because PyPSA-GB is under active development and
+model structure, datasets and market functionality may change over time.
+
+To obtain the same upstream source revision:
+
+```bash
+git clone https://github.com/andrewlyden/PyPSA-GB.git
+cd PyPSA-GB
+git checkout 8e084afe4fb2d4be86f270d3f12ad3315eee2a3a
+```
+
+## 28.2 Repository separation
+
+The two repositories are intentionally maintained separately:
+
+```text
+parent-directory/
+├── PyPSA-GB/
+│   ├── config/
+│   ├── resources/
+│   │   ├── network/
+│   │   └── market/
+│   └── scripts/
 │
-├── build_empirical_daily.py
-├── prepare_bess_sweep_networks.py
-├── analyse_bess_sweep.py
-├── diagnose_wholesale_physical_gap.py
-└── plot_asset_redispatch.py
+└── gb-market-design-bess/
+    ├── scripts/
+    ├── notebooks/
+    ├── data/
+    ├── results/
+    ├── figures/
+    └── README.md
+```
 
-Example execution:
+PyPSA-GB provides the underlying electricity-system model and native
+wholesale/balancing workflow. This repository contains the research layer.
 
-python project1_gb_market/scripts/analyse_bess_sweep.py
-python project1_gb_market/scripts/diagnose_wholesale_physical_gap.py
-python project1_gb_market/scripts/plot_asset_redispatch.py
-29. Repository Structure
-project1_gb_market/
+Large PyPSA network files, ERA5/Atlite cutouts and native market outputs
+are therefore not duplicated here.
+
+## 28.3 Software environment
+
+The study was developed using:
+
+- Python
+- PyPSA 1.0.7
+- Snakemake 9.13.4
+- HiGHS / highspy
+- pandas
+- NumPy
+- matplotlib
+
+## 28.4 Empirical workflow
+
+Relevant scripts include:
+
+```text
+scripts/fetch_elexon_core.py
+scripts/fetch_neso_constraints.py
+scripts/audit_elexon_dataset.py
+scripts/repair_elexon_gaps.py
+scripts/build_empirical_daily.py
+scripts/analyse_empirical_constraints.py
+scripts/plot_empirical_results.py
+```
+
+Raw downloads and large intermediate datasets are excluded from Git.
+Compact processed datasets and data-quality outputs are retained.
+
+## 28.5 Native model workflow
+
+The January 2020 counterfactual follows:
+
+```text
+PyPSA-GB baseline
+        ↓
+wholesale market dispatch
+        ↓
+network-constrained balancing
+        ↓
+candidate BESS-node analysis
+        ↓
+incremental BESS scenarios
+        ↓
+redispatch and cost diagnostics
+```
+
+Incremental BESS cases:
+
+```text
+0 MW    baseline
+50 MW   / 100 MWh
+70 MW   / 140 MWh
+100 MW  / 200 MWh
+120 MW  / 240 MWh
+```
+
+Relevant analysis commands:
+
+```bash
+python scripts/find_bess_candidate_bus.py
+python scripts/prepare_bess_sweep_networks.py
+python scripts/analyse_bess_sweep.py
+python scripts/diagnose_wholesale_physical_gap.py
+python scripts/plot_asset_redispatch.py
+```
+
+Model-dependent scripts read network and market resources from the sibling
+PyPSA-GB repository while research outputs are written to this repository's
+`results/` and `figures/` directories.
+
+## 28.6 Exploratory notebooks
+
+The notebooks document earlier physical-network exploration,
+horizon-sensitivity testing and the rejected generic BESS experiment.
+
+They are retained for research provenance rather than presented as the
+primary reproduction interface for the final market-design experiment.
+
+See `notebooks/README.md` for details.
+
+## 28.7 Reproducibility boundary
+
+A clone of this repository is sufficient to inspect the methodology, code,
+processed empirical evidence, summary results and figures.
+
+Re-running the native PyPSA-GB counterfactual also requires the pinned
+upstream PyPSA-GB revision, its associated input resources, the January
+2020 market configuration and sufficient computational resources.
+
+This separation avoids presenting this research repository as a standalone
+distribution of PyPSA-GB.
+
+---
+
+# 29. Repository Structure
+
+gb-market-design-bess/
 
 
 ├── scripts/

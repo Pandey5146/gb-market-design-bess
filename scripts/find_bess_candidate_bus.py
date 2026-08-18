@@ -8,7 +8,9 @@ import pypsa
 # PATHS
 # ============================================================
 
-REPO = Path(__file__).resolve().parents[2]
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+REPO = PROJECT_ROOT.parent / "PyPSA-GB"
 
 SCENARIO = "Validation_Jan2020_UniformNetworkBaseline"
 
@@ -281,8 +283,7 @@ print(
 # ============================================================
 
 OUTPUT = (
-    REPO
-    / "project1_gb_market"
+    PROJECT_ROOT
     / "results"
     / "bess_candidate_buses.csv"
 )

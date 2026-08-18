@@ -6,9 +6,10 @@ import matplotlib.pyplot as plt
 # PATHS
 # ============================================================
 
-ROOT = Path(".")
-RESULTS = ROOT / "project1_gb_market" / "results"
-FIGURES = ROOT / "project1_gb_market" / "figures"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+RESULTS = PROJECT_ROOT / "results"
+FIGURES = PROJECT_ROOT / "figures"
 
 RESULTS.mkdir(parents=True, exist_ok=True)
 FIGURES.mkdir(parents=True, exist_ok=True)

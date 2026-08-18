@@ -5,10 +5,11 @@ import pandas as pd
 # PATHS
 # ============================================================
 
-# Script location:
-#
-# We want repo root:
-REPO = Path(__file__).resolve().parents[2]
+# Standalone research repository.
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+# Separate sibling PyPSA-GB repository.
+REPO = PROJECT_ROOT.parent / "PyPSA-GB"
 
 MARKET = REPO / "resources" / "market"
 

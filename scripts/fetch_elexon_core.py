@@ -17,9 +17,9 @@ END_YEAR = 2025
 
 CHUNK_DAYS = 7
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
-PROJECT_DIR = REPO_ROOT / "project1_gb_market"
+PROJECT_DIR = REPO_ROOT
 
 RAW_DIR = (
     PROJECT_DIR

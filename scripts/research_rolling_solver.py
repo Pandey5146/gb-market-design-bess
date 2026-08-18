@@ -12,11 +12,13 @@ import yaml
 # PATHS
 # ============================================================
 
-# research_rolling_solver.py is located at:
-# PyPSA-GB/project1_gb_market/scripts/
-REPO_ROOT = Path(__file__).resolve().parents[2]
+# Standalone research repository.
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-# Make the main PyPSA-GB repository importable
+# Separate sibling PyPSA-GB repository.
+REPO_ROOT = PROJECT_ROOT.parent / "PyPSA-GB"
+
+# Make upstream PyPSA-GB importable.
 sys.path.insert(0, str(REPO_ROOT))
 
 

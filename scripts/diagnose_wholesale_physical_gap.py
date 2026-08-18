@@ -5,12 +5,15 @@ import matplotlib.pyplot as plt
 import pypsa
 
 
-ROOT = Path(".")
-MARKET = ROOT / "resources" / "market"
-NETWORK = ROOT / "resources" / "network"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-RESULTS = ROOT / "project1_gb_market" / "results"
-FIGURES = ROOT / "project1_gb_market" / "figures"
+PYPSA_GB_ROOT = PROJECT_ROOT.parent / "PyPSA-GB"
+
+MARKET = PYPSA_GB_ROOT / "resources" / "market"
+NETWORK = PYPSA_GB_ROOT / "resources" / "network"
+
+RESULTS = PROJECT_ROOT / "results"
+FIGURES = PROJECT_ROOT / "figures"
 
 RESULTS.mkdir(parents=True, exist_ok=True)
 FIGURES.mkdir(parents=True, exist_ok=True)
